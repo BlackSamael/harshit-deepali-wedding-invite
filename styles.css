@@ -68,7 +68,8 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 64px;
+  gap: 9px;
+  min-width: 96px;
   height: 44px;
   padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.42);
@@ -79,6 +80,37 @@ textarea {
   font-size: 1.02rem;
   font-weight: 700;
   letter-spacing: 0;
+}
+
+.brand-icon {
+  position: relative;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 18px;
+}
+
+.brand-icon::before,
+.brand-icon::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--marigold);
+  border-radius: 50%;
+}
+
+.brand-icon::before {
+  left: 1px;
+}
+
+.brand-icon::after {
+  right: 1px;
+  border-color: #ffe18b;
+}
+
+.brand-icon {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.32));
 }
 
 .top-nav {
@@ -115,7 +147,7 @@ textarea {
   overflow: hidden;
   color: var(--white);
   background:
-    linear-gradient(118deg, rgba(23, 15, 24, 0.96) 0%, rgba(71, 22, 39, 0.86) 44%, rgba(49, 89, 71, 0.76) 100%),
+    linear-gradient(118deg, rgba(23, 15, 24, 0.98) 0%, rgba(71, 22, 39, 0.9) 42%, rgba(49, 89, 71, 0.82) 100%),
     linear-gradient(36deg, rgba(215, 163, 63, 0.34), rgba(143, 35, 58, 0.22)),
     var(--night);
   isolation: isolate;
@@ -135,62 +167,123 @@ textarea {
 .hero-art::before {
   content: "";
   position: absolute;
-  inset: 12% 8% 8% auto;
-  width: min(48vw, 620px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 50%;
+  right: 0;
+  top: 0;
+  width: min(58vw, 760px);
+  height: 100%;
+  opacity: 0.45;
   background:
-    linear-gradient(45deg, transparent 48%, rgba(214, 155, 58, 0.38) 49%, rgba(214, 155, 58, 0.38) 51%, transparent 52%),
-    linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.16) 49%, rgba(255, 255, 255, 0.16) 51%, transparent 52%);
+    repeating-linear-gradient(90deg, rgba(215, 163, 63, 0.2) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 32px);
+  mask-image: linear-gradient(90deg, transparent, #000 28%, #000 100%);
 }
 
-.hero-flower,
-.hero-ring {
+.royal-arch {
+  position: absolute;
+  right: clamp(28px, 8vw, 108px);
+  top: clamp(112px, 17vh, 160px);
+  width: clamp(260px, 33vw, 460px);
+  aspect-ratio: 0.72;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(215, 163, 63, 0.46);
+  border-radius: 46% 46% 8px 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 249, 239, 0.12), rgba(255, 249, 239, 0.03)),
+    repeating-linear-gradient(45deg, rgba(215, 163, 63, 0.16) 0 1px, transparent 1px 18px);
+  box-shadow:
+    inset 0 0 0 12px rgba(255, 255, 255, 0.04),
+    0 36px 90px rgba(0, 0, 0, 0.22);
+}
+
+.royal-arch::before,
+.royal-arch::after {
+  content: "";
+  position: absolute;
+  inset: 24px;
+  border: 1px solid rgba(215, 163, 63, 0.34);
+  border-radius: 45% 45% 8px 8px;
+  pointer-events: none;
+}
+
+.royal-arch::after {
+  inset: auto 18% 34px;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(215, 163, 63, 0.85), transparent);
+}
+
+.royal-crest {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  place-items: center;
+  width: min(72%, 310px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(215, 163, 63, 0.62);
+  border-radius: 50%;
+  background:
+    linear-gradient(145deg, rgba(143, 35, 58, 0.82), rgba(23, 15, 24, 0.66)),
+    var(--night);
+  color: var(--white);
+  text-align: center;
+  box-shadow:
+    inset 0 0 0 14px rgba(255, 255, 255, 0.05),
+    inset 0 0 0 15px rgba(215, 163, 63, 0.18);
+}
+
+.royal-crest::before,
+.royal-crest::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border: 1px solid rgba(215, 163, 63, 0.34);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.royal-crest::after {
+  inset: 17px;
+  border-style: dashed;
+  opacity: 0.62;
+}
+
+.royal-crest strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(4rem, 8vw, 6.9rem);
+  line-height: 0.72;
+}
+
+.royal-crest span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.crest-kicker {
+  margin-top: 28px;
+  color: var(--marigold) !important;
+}
+
+.royal-line {
   position: absolute;
   display: block;
+  width: clamp(180px, 32vw, 420px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215, 163, 63, 0.72), transparent);
 }
 
-.hero-flower {
-  width: clamp(180px, 28vw, 360px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(214, 155, 58, 0.32);
-  border-radius: 45% 55% 42% 58%;
-  background:
-    linear-gradient(135deg, rgba(165, 64, 84, 0.52), rgba(214, 155, 58, 0.18)),
-    repeating-linear-gradient(48deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 18px);
-  transform: rotate(18deg);
-}
-
-.flower-one {
-  right: 7%;
+.line-one {
+  right: 10%;
   top: 18%;
+  transform: rotate(-18deg);
 }
 
-.flower-two {
-  right: 27%;
-  bottom: 10%;
-  width: clamp(130px, 22vw, 250px);
-  opacity: 0.78;
-  transform: rotate(-32deg);
-}
-
-.hero-ring {
-  width: clamp(120px, 20vw, 240px);
-  aspect-ratio: 1;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-}
-
-.ring-one {
-  right: 17%;
-  top: 35%;
-}
-
-.ring-two {
-  right: 3%;
-  bottom: 26%;
-  border-color: rgba(214, 155, 58, 0.36);
+.line-two {
+  right: 1%;
+  bottom: 17%;
+  transform: rotate(14deg);
 }
 
 .hero-scrim {
@@ -238,6 +331,14 @@ textarea {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.55rem, 4vw, 2.35rem);
   font-weight: 600;
+}
+
+.hero-venue {
+  margin: 6px 0 0;
+  color: var(--marigold);
+  font-size: 0.92rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .hero-copy {
@@ -331,12 +432,33 @@ textarea {
 
 .countdown-band {
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(280px, 1.2fr);
-  gap: clamp(22px, 4vw, 48px);
+  grid-template-columns: minmax(260px, 0.78fr) minmax(320px, 1.22fr);
+  gap: clamp(24px, 5vw, 72px);
   align-items: center;
-  padding: clamp(34px, 7vw, 72px) clamp(20px, 7vw, 88px);
-  background: var(--night);
+  padding: clamp(42px, 8vw, 92px) clamp(20px, 7vw, 88px);
+  background:
+    linear-gradient(135deg, rgba(23, 15, 24, 0.96), rgba(58, 18, 36, 0.94)),
+    var(--night);
   color: var(--white);
+  overflow: hidden;
+  position: relative;
+}
+
+.countdown-band::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(215, 163, 63, 0.16);
+  pointer-events: none;
+}
+
+.countdown-intro {
+  position: relative;
+  z-index: 1;
+}
+
+.countdown-intro h2 {
+  max-width: 520px;
 }
 
 .countdown-intro h2,
@@ -350,32 +472,116 @@ textarea {
   letter-spacing: 0;
 }
 
-.countdown-grid {
+.countdown-card {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(78px, 1fr));
-  gap: 10px;
+  grid-template-columns: minmax(160px, 0.92fr) minmax(230px, 1.08fr);
+  gap: 16px;
+  min-height: 250px;
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid rgba(215, 163, 63, 0.38);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 249, 239, 0.13), rgba(255, 255, 255, 0.04)),
+    repeating-linear-gradient(45deg, rgba(215, 163, 63, 0.1) 0 1px, transparent 1px 20px);
+  box-shadow: 0 28px 84px rgba(0, 0, 0, 0.24);
 }
 
-.countdown-grid div {
-  min-height: 116px;
+.countdown-card::before,
+.countdown-card::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--radius) - 2px);
+  pointer-events: none;
+}
+
+.countdown-card::after {
+  inset: auto 28px 24px;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(215, 163, 63, 0.75), transparent);
+}
+
+.countdown-card-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.countdown-card-header strong {
+  color: var(--marigold);
+}
+
+.countdown-main {
   display: grid;
   align-content: center;
   justify-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.08);
+  min-height: 170px;
+  border: 1px solid rgba(215, 163, 63, 0.42);
+  border-radius: 50% 50% 8px 8px;
+  background:
+    linear-gradient(180deg, rgba(143, 35, 58, 0.5), rgba(23, 15, 24, 0.42)),
+    rgba(255, 255, 255, 0.05);
+  text-align: center;
 }
 
-.countdown-grid strong {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
+.countdown-main strong {
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(3.8rem, 7vw, 5.8rem);
+  font-weight: 700;
+  line-height: 0.82;
+}
+
+.countdown-main span {
+  width: min(190px, 86%);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.countdown-subgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  align-self: stretch;
+}
+
+.countdown-subgrid div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  min-height: 170px;
+  padding: 14px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.countdown-subgrid strong {
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.95rem, 3.4vw, 3.1rem);
+  font-weight: 700;
   line-height: 0.9;
 }
 
-.countdown-grid span {
+.countdown-subgrid span {
   color: rgba(255, 255, 255, 0.7);
+  font-family: "Cinzel", "Cormorant Garamond", Georgia, serif;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -430,31 +636,76 @@ textarea {
 }
 
 .events-section {
-  background: var(--paper-deep);
+  background:
+    linear-gradient(180deg, rgba(255, 249, 239, 0.72), rgba(243, 226, 203, 0.94)),
+    var(--paper-deep);
 }
 
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-top: 36px;
 }
 
 .event-card {
+  position: relative;
   min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 24px;
-  padding: 24px;
+  padding: 26px;
+  border: 1px solid rgba(143, 35, 58, 0.12);
   border-radius: var(--radius);
-  background: var(--white);
-  box-shadow: 0 14px 36px rgba(36, 29, 27, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 249, 239, 0.9)),
+    var(--white);
+  box-shadow: 0 16px 44px rgba(36, 29, 27, 0.1);
+  overflow: hidden;
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(215, 163, 63, 0.26);
+  border-radius: calc(var(--radius) - 2px);
+  pointer-events: none;
+}
+
+.event-card::after {
+  content: "";
+  position: absolute;
+  right: 26px;
+  top: 26px;
+  width: 68px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(215, 163, 63, 0.75), transparent);
+  transform: rotate(35deg);
+  pointer-events: none;
+}
+
+.event-mark {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(215, 163, 63, 0.46);
+  border-radius: 50%;
+  background: var(--night);
+  color: var(--marigold);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .event-card .event-date {
   color: var(--rose);
-  font-weight: 800;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .event-card h3 {
@@ -477,6 +728,53 @@ textarea {
   font-weight: 700;
 }
 
+.program-card {
+  min-height: auto;
+}
+
+.program-card .event-mark {
+  font-size: 1.45rem;
+}
+
+.program-card h3 {
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.program-list {
+  display: grid;
+  gap: 0;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.program-list li {
+  display: grid;
+  grid-template-columns: minmax(88px, max-content) minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  min-height: 48px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(36, 29, 27, 0.1);
+}
+
+.program-list li:last-child {
+  border-bottom: 0;
+}
+
+.program-list time {
+  color: var(--rose);
+  font-size: 0.88rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.program-list span {
+  color: var(--ink);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .venue-section {
   padding: clamp(60px, 10vw, 120px) clamp(20px, 7vw, 88px);
   background:
@@ -487,6 +785,11 @@ textarea {
 
 .venue-copy {
   align-self: center;
+}
+
+.map-stack {
+  display: grid;
+  gap: 16px;
 }
 
 .map-panel {
@@ -748,7 +1051,7 @@ textarea {
 
 .event-picker label {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 9px;
   min-height: 44px;
   padding: 10px 12px;
@@ -761,7 +1064,27 @@ textarea {
 .event-picker input {
   width: 16px;
   height: 16px;
+  margin-top: 3px;
   accent-color: var(--rose);
+}
+
+.function-option-copy {
+  display: grid;
+  gap: 2px;
+  line-height: 1.25;
+}
+
+.function-option-date {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.function-option-name {
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 800;
 }
 
 .rsvp-form input,
@@ -792,6 +1115,36 @@ textarea {
   height: 100%;
   min-height: 460px;
   border: 0;
+}
+
+.stay-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 22px;
+  border: 1px solid rgba(143, 35, 58, 0.12);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 249, 239, 0.82)),
+    var(--white);
+  box-shadow: 0 16px 44px rgba(36, 29, 27, 0.1);
+}
+
+.stay-card .section-kicker {
+  margin-bottom: 6px;
+}
+
+.stay-card h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  line-height: 1;
+}
+
+.stay-card p:not(.section-kicker) {
+  margin: 8px 0 0;
+  color: var(--muted);
 }
 
 .rsvp-form input:focus,
@@ -855,14 +1208,36 @@ textarea {
   }
 
   .brand-mark {
-    min-width: 54px;
+    min-width: 88px;
     height: 40px;
     padding: 0 11px;
     font-size: 0.92rem;
   }
 
+  .brand-icon {
+    flex-basis: 22px;
+    width: 22px;
+    height: 16px;
+  }
+
+  .brand-icon::before,
+  .brand-icon::after {
+    width: 12px;
+    height: 12px;
+  }
+
   .hero {
     min-height: 92vh;
+  }
+
+  .royal-arch {
+    right: -92px;
+    top: 96px;
+    opacity: 0.58;
+  }
+
+  .royal-line {
+    display: none;
   }
 
   .hero-content {
@@ -884,8 +1259,17 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .countdown-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .countdown-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .countdown-main {
+    min-height: 210px;
+  }
+
+  .countdown-subgrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .events-grid {
@@ -926,8 +1310,21 @@ textarea {
     width: 100%;
   }
 
-  .countdown-grid div {
-    min-height: 96px;
+  .countdown-card-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .countdown-main {
+    min-height: 178px;
+  }
+
+  .countdown-subgrid div {
+    min-height: 92px;
+  }
+
+  .countdown-subgrid strong {
+    font-size: 1.9rem;
   }
 
   .event-card {
@@ -943,6 +1340,10 @@ textarea {
   }
 
   .event-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .stay-card {
     grid-template-columns: 1fr;
   }
 }

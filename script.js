@@ -1,14 +1,15 @@
 const inviteDetails = {
-  brideName: "Deepali",
-  groomName: "Harshit",
-  brideFullName: "Deepali Gupta",
-  groomFullName: "Harshit Khandelwal",
-  monogram: "D + H",
+  brideName: "Harshit",
+  groomName: "Deepali",
+  brideFullName: "Harshit Khandelwal",
+  groomFullName: "Deepali Gupta",
+  monogram: "H + D",
   weddingDate: "2026-11-20T10:00:00+05:30",
+  celebrationEndDate: "2026-11-21T23:00:00+05:30",
   weddingDateDisplay: "20 and 21 November 2026",
   countdownTitle: "The royal celebration begins soon",
   heroCopy:
-    "Deepali Gupta and Harshit Khandelwal invite you to Kota for two days of blessings, music, rituals, and royal celebration.",
+    "Harshit Khandelwal and Deepali Gupta invite you to Kota for two days of blessings, music, rituals, and royal celebration.",
   invitationMessage:
     "Your presence would make our wedding celebrations warmer, brighter, and complete. Join us as our families come together in Kota to bless this beautiful beginning.",
   hostLine: "Hosted by the Gupta and Khandelwal families",
@@ -17,59 +18,60 @@ const inviteDetails = {
   venueAddress: "Kota, Rajasthan",
   venueCity: "Kota",
   mapUrl: "https://maps.app.goo.gl/aD5LV8jAASJrSXN46",
+  friendsStayName: "Stay Location for Friends",
+  friendsStayCopy: "Use this map link for the friends' accommodation during the wedding celebrations.",
+  friendsStayMapUrl: "https://maps.app.goo.gl/tU2F9nR4g6uxysSUA",
   rsvpSheetUrl:
     "https://docs.google.com/spreadsheets/d/12tNFSUdWr4wkpq0ri_pp0IM08li3iQNAMcS5ekF3_xg/edit?usp=sharing",
   googleSheetsWebAppUrl: "https://script.google.com/macros/s/AKfycbwRnBOuz89Sz1bQHQ5L16jLc9aldJ2hTz8f-Hof4P6CbOTknS_Xt48MBXpq_klXn79C/exec",
-  footerLine: "Made with love for Deepali and Harshit",
+  footerLine: "Made with love for Harshit and Deepali",
   storyOneTitle: "The families gather",
   storyOneCopy: "Two families come together in Kota for a celebration filled with warmth and blessings.",
   storyTwoTitle: "The rituals",
   storyTwoCopy:
-    "Haldi, Mehendi, Sangeet, Wedding, and Reception mark each step of this joyful union.",
+    "Sagai, Sangeet Night, Haldi, Barat, and the Wedding Procession mark each step of this joyful union.",
   storyThreeTitle: "The new beginning",
   storyThreeCopy:
-    "With your love and good wishes, Deepali and Harshit begin their next chapter together.",
-  events: [
+    "With your love and good wishes, Harshit and Deepali begin their next chapter together.",
+  programDays: [
     {
-      title: "Haldi",
+      title: "20th November Programs",
+      mark: "20",
       date: "20 November",
-      time: "Time to be announced",
+      shortDate: "20 Nov",
       venue: "Dharnidhar, Kota",
-      note: "A bright start to the celebrations with blessings, color, and laughter.",
+      note: "Breakfast, lunch, Sagai, Sangeet Night, and dinner to begin the celebration.",
+      functions: [
+        { time: "10:00 AM", name: "Breakfast" },
+        { time: "1:00 PM", name: "Lunch" },
+        { time: "2:00 PM", name: "Sagai" },
+        { time: "6:00 PM", name: "Sangeet Night" },
+        { time: "8:00 PM", name: "Dinner" },
+      ],
     },
     {
-      title: "Mehendi",
-      date: "20 November",
-      time: "Time to be announced",
-      venue: "Dharnidhar, Kota",
-      note: "An evening of intricate mehendi, music, and family joy.",
-    },
-    {
-      title: "Sangeet",
-      date: "20 November",
-      time: "Time to be announced",
-      venue: "Dharnidhar, Kota",
-      note: "Dance, performances, and a royal night of celebration.",
-    },
-    {
-      title: "Wedding",
+      title: "21st November",
+      mark: "21",
       date: "21 November",
-      time: "Time to be announced",
+      shortDate: "21 Nov",
       venue: "Dharnidhar, Kota",
-      note: "The wedding ceremony, followed by blessings and dinner.",
-    },
-    {
-      title: "Reception",
-      date: "21 November",
-      time: "Time to be announced",
-      venue: "Dharnidhar, Kota",
-      note: "A graceful evening to meet, greet, and celebrate the newlyweds.",
+      note: "Haldi, Barat, dinner, and the wedding procession with blessings from everyone.",
+      functions: [
+        { time: "9:00 AM", name: "Breakfast" },
+        { time: "10:00 AM", name: "Haldi" },
+        { time: "1:00 PM", name: "Lunch" },
+        { time: "6:00 PM", name: "Barat" },
+        { time: "7:00 PM", name: "Dinner & Wedding Procession" },
+      ],
     },
   ],
 };
 
 const byDataText = document.querySelectorAll("[data-text]");
 const eventContainer = document.querySelector("[data-events]");
+const functionPicker = document.querySelector("[data-function-picker]");
+const rsvpForm = document.querySelector("[data-rsvp-form]");
+const saveDateButton = document.querySelector('[data-action="download-calendar"]');
 const countdownDate = new Date(inviteDetails.weddingDate);
 const countdownEls = {
   days: document.querySelector("[data-countdown-days]"),
@@ -94,26 +96,77 @@ function applyContent() {
   mapLinks.forEach((link) => {
     link.href = inviteDetails.mapUrl;
   });
+
+  const friendsStayLinks = document.querySelectorAll('[data-link="friendsStayMapUrl"]');
+  friendsStayLinks.forEach((link) => {
+    link.href = inviteDetails.friendsStayMapUrl;
+  });
 }
 
 function renderEvents() {
   eventContainer.innerHTML = "";
 
-  inviteDetails.events.forEach((event) => {
+  inviteDetails.programDays.forEach((day) => {
+    const scheduleItems = day.functions
+      .map(
+        (item) => `
+        <li>
+          <time>${item.time}</time>
+          <span>${item.name}</span>
+        </li>
+      `
+      )
+      .join("");
+
     const article = document.createElement("article");
-    article.className = "event-card";
+    article.className = "event-card program-card";
     article.innerHTML = `
+      <div class="event-mark">${day.mark}</div>
       <div>
-        <div class="event-date">${event.date}</div>
-        <h3>${event.title}</h3>
-        <p>${event.note}</p>
+        <div class="event-date">${day.date}</div>
+        <h3>${day.title}</h3>
+        <p>${day.note}</p>
       </div>
+      <ul class="program-list">
+        ${scheduleItems}
+      </ul>
       <div class="event-meta">
-        <span>${event.time}</span>
-        <span>${event.venue}</span>
+        <span>${day.venue}</span>
       </div>
     `;
     eventContainer.appendChild(article);
+  });
+}
+
+function renderFunctionOptions() {
+  if (!functionPicker) {
+    return;
+  }
+
+  functionPicker.querySelectorAll("label").forEach((label) => label.remove());
+
+  inviteDetails.programDays.forEach((day) => {
+    day.functions.forEach((item) => {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      const copy = document.createElement("span");
+      const meta = document.createElement("span");
+      const name = document.createElement("span");
+
+      input.name = "functions";
+      input.type = "checkbox";
+      input.value = `${day.date} - ${item.time} ${item.name}`;
+
+      copy.className = "function-option-copy";
+      meta.className = "function-option-date";
+      name.className = "function-option-name";
+      meta.textContent = `${day.shortDate} | ${item.time}`;
+      name.textContent = item.name;
+
+      copy.append(meta, name);
+      label.append(input, copy);
+      functionPicker.appendChild(label);
+    });
   });
 }
 
@@ -179,9 +232,23 @@ async function submitRsvp(event) {
 
 function downloadCalendarInvite() {
   const start = new Date(inviteDetails.weddingDate);
-  const end = new Date(start.getTime() + 4 * 60 * 60 * 1000);
+  const end = new Date(inviteDetails.celebrationEndDate);
   const formatIcsDate = (date) =>
     date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const escapeIcsText = (value) =>
+    value
+      .replace(/\\/g, "\\\\")
+      .replace(/\n/g, "\\n")
+      .replace(/,/g, "\\,")
+      .replace(/;/g, "\\;");
+  const programDescription = inviteDetails.programDays
+    .map((day) => {
+      const functions = day.functions
+        .map((item) => `${item.time} - ${item.name}`)
+        .join("; ");
+      return `${day.title}: ${functions}`;
+    })
+    .join("\n");
 
   const ics = [
     "BEGIN:VCALENDAR",
@@ -192,9 +259,9 @@ function downloadCalendarInvite() {
     `DTSTAMP:${formatIcsDate(new Date())}`,
     `DTSTART:${formatIcsDate(start)}`,
     `DTEND:${formatIcsDate(end)}`,
-    `SUMMARY:${inviteDetails.brideFullName} & ${inviteDetails.groomFullName} Wedding`,
+    `SUMMARY:${inviteDetails.brideFullName} & ${inviteDetails.groomFullName} Wedding Celebration`,
     `LOCATION:${inviteDetails.venueName}, ${inviteDetails.venueAddress}`,
-    `DESCRIPTION:${inviteDetails.heroCopy}`,
+    `DESCRIPTION:${escapeIcsText(`${inviteDetails.heroCopy}\n\nProgram:\n${programDescription}`)}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -210,12 +277,16 @@ function downloadCalendarInvite() {
   URL.revokeObjectURL(url);
 }
 
-document.querySelector("[data-rsvp-form]").addEventListener("submit", submitRsvp);
-document
-  .querySelector('[data-action="download-calendar"]')
-  .addEventListener("click", downloadCalendarInvite);
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", submitRsvp);
+}
+
+if (saveDateButton) {
+  saveDateButton.addEventListener("click", downloadCalendarInvite);
+}
 
 applyContent();
 renderEvents();
+renderFunctionOptions();
 updateCountdown();
 setInterval(updateCountdown, 1000);

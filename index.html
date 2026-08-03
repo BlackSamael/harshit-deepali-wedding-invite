@@ -6,51 +6,59 @@
     <meta name="theme-color" content="#3b2f2f">
     <meta
       name="description"
-      content="Deepali Gupta and Harshit Khandelwal's wedding invitation in Kota, Rajasthan."
+      content="Harshit Khandelwal and Deepali Gupta's wedding invitation in Kota, Rajasthan."
     >
-    <title>Deepali & Harshit Wedding Invitation</title>
+    <title>Harshit & Deepali Wedding Invitation</title>
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=20260803-wedding-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260803-wedding-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260803-programs">
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
       <a class="brand-mark" href="#home" aria-label="Wedding invitation home">
-        <span data-text="monogram">D + H</span>
+        <span class="brand-icon" aria-hidden="true"></span>
+        <span data-text="monogram">H + D</span>
       </a>
       <nav class="top-nav" aria-label="Wedding sections">
         <a href="#events">Events</a>
         <a href="#venue">Venue</a>
-        <a href="#rsvp">RSVP</a>
       </nav>
     </header>
 
     <main>
       <section class="hero" id="home">
         <div class="hero-art" aria-hidden="true">
-          <span class="hero-flower flower-one"></span>
-          <span class="hero-flower flower-two"></span>
-          <span class="hero-ring ring-one"></span>
-          <span class="hero-ring ring-two"></span>
+          <div class="royal-arch">
+            <div class="royal-crest">
+              <span class="crest-kicker">Wedding</span>
+              <strong data-text="monogram">H + D</strong>
+              <span>Kota</span>
+            </div>
+          </div>
+          <span class="royal-line line-one"></span>
+          <span class="royal-line line-two"></span>
         </div>
         <div class="hero-scrim"></div>
         <div class="hero-content">
           <p class="eyebrow">Together with their families</p>
           <h1>
-            <span data-text="brideName">Deepali</span>
+            <span data-text="brideName">Harshit</span>
             <span class="ampersand">&amp;</span>
-            <span data-text="groomName">Harshit</span>
+            <span data-text="groomName">Deepali</span>
           </h1>
           <p class="hero-date" data-text="weddingDateDisplay">20 and 21 November 2026</p>
+          <p class="hero-venue">Dharnidhar, Kota, Rajasthan</p>
           <p class="hero-copy" data-text="heroCopy">
             We invite you to celebrate a day of love, laughter, blessings, and new beginnings.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#rsvp">RSVP</a>
+            <a class="button primary" href="#events">View Programs</a>
             <button class="button ghost" type="button" data-action="download-calendar">
               Save Date
             </button>
@@ -66,22 +74,28 @@
           <p class="section-kicker">The celebration begins in</p>
           <h2 data-text="countdownTitle">A little while longer</h2>
         </div>
-        <div class="countdown-grid" data-countdown>
-          <div>
+        <div class="countdown-card" data-countdown>
+          <div class="countdown-card-header">
+            <span>20 November</span>
+            <strong>Kota awaits</strong>
+          </div>
+          <div class="countdown-main">
             <strong data-countdown-days>00</strong>
-            <span>Days</span>
+            <span>Days to the royal celebration</span>
           </div>
-          <div>
-            <strong data-countdown-hours>00</strong>
-            <span>Hours</span>
-          </div>
-          <div>
-            <strong data-countdown-minutes>00</strong>
-            <span>Minutes</span>
-          </div>
-          <div>
-            <strong data-countdown-seconds>00</strong>
-            <span>Seconds</span>
+          <div class="countdown-subgrid">
+            <div>
+              <strong data-countdown-hours>00</strong>
+              <span>Hours</span>
+            </div>
+            <div>
+              <strong data-countdown-minutes>00</strong>
+              <span>Minutes</span>
+            </div>
+            <div>
+              <strong data-countdown-seconds>00</strong>
+              <span>Seconds</span>
+            </div>
           </div>
         </div>
       </section>
@@ -117,16 +131,33 @@
             <a class="button primary" data-link="mapUrl" href="#" target="_blank" rel="noreferrer">
               Directions
             </a>
+            <a class="button quiet" data-link="friendsStayMapUrl" href="#" target="_blank" rel="noreferrer">
+              Friends Stay
+            </a>
           </div>
         </div>
-        <div class="map-panel embedded-map" aria-label="Dharnidhar location map">
-          <iframe
-            title="Dharnidhar, Kota map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5717336042117!2d75.8336764!3d25.116354599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f845e1bd80d7f%3A0x5475162f54c7d19c!2sDharani%20Dhar%20Garden!5e0!3m2!1sen!2sin!4v1783066938122!5m2!1sen!2sin"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-          ></iframe>
+        <div class="map-stack">
+          <div class="map-panel embedded-map" aria-label="Dharnidhar location map">
+            <iframe
+              title="Dharnidhar, Kota map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.5717336042117!2d75.8336764!3d25.116354599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f845e1bd80d7f%3A0x5475162f54c7d19c!2sDharani%20Dhar%20Garden!5e0!3m2!1sen!2sin!4v1783066938122!5m2!1sen!2sin"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+          <article class="stay-card" aria-label="Friends stay location">
+            <div>
+              <p class="section-kicker">Friends Stay</p>
+              <h3 data-text="friendsStayName">Stay Location for Friends</h3>
+              <p data-text="friendsStayCopy">
+                Directions for the friends' accommodation are available here.
+              </p>
+            </div>
+            <a class="button quiet" data-link="friendsStayMapUrl" href="#" target="_blank" rel="noreferrer">
+              Open Stay Map
+            </a>
+          </article>
         </div>
       </section>
 
@@ -168,88 +199,32 @@
         <div class="gallery-grid" aria-label="Wedding invitation visuals">
           <div class="gallery-feature">
             <div class="gallery-emblem">
-              <span data-text="monogram">D + H</span>
+              <span data-text="monogram">H + D</span>
               <strong data-text="weddingDateDisplay">20 and 21 November 2026</strong>
             </div>
           </div>
           <div class="gallery-tile tile-one">
-            <span>Mehendi</span>
+            <span>Sagai</span>
           </div>
           <div class="gallery-tile tile-two">
-            <span>Sangeet</span>
+            <span>Sangeet Night</span>
           </div>
           <div class="gallery-tile tile-three">
-            <span>Wedding</span>
+            <span>Haldi</span>
           </div>
           <div class="gallery-tile tile-four">
-            <span>Reception</span>
+            <span>Wedding Procession</span>
           </div>
         </div>
       </section>
 
-      <section class="rsvp-section" id="rsvp" aria-labelledby="rsvp-title">
-        <div class="section-copy">
-          <p class="section-kicker">RSVP</p>
-          <h2 id="rsvp-title">Tell us if you can make it</h2>
-          <p>
-            Share your response and we will keep your place ready in the celebration.
-          </p>
-        </div>
-        <form class="rsvp-form" data-rsvp-form>
-          <label>
-            Your name
-            <input name="guestName" type="text" autocomplete="name" required>
-          </label>
-          <label>
-            Phone number
-            <input name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
-          </label>
-          <label>
-            Attending
-            <select name="attending" required>
-              <option value="Yes">Yes, with joy</option>
-              <option value="No">Sorry, cannot attend</option>
-              <option value="Maybe">Will confirm soon</option>
-            </select>
-          </label>
-          <fieldset class="event-picker">
-            <legend>Functions you plan to attend</legend>
-            <label>
-              <input name="functions" type="checkbox" value="Haldi">
-              Haldi
-            </label>
-            <label>
-              <input name="functions" type="checkbox" value="Mehendi">
-              Mehendi
-            </label>
-            <label>
-              <input name="functions" type="checkbox" value="Sangeet">
-              Sangeet
-            </label>
-            <label>
-              <input name="functions" type="checkbox" value="Wedding">
-              Wedding
-            </label>
-            <label>
-              <input name="functions" type="checkbox" value="Reception">
-              Reception
-            </label>
-          </fieldset>
-          <label>
-            Message
-            <textarea name="message" rows="4" placeholder="Blessings, wishes, or a note for the family"></textarea>
-          </label>
-          <button class="button primary full" type="submit">Send RSVP</button>
-          <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-        </form>
-      </section>
     </main>
 
     <footer class="site-footer">
-      <p data-text="footerLine">Made with love for Deepali and Harshit</p>
+      <p data-text="footerLine">Made with love for Harshit and Deepali</p>
       <a data-link="mapUrl" href="#" target="_blank" rel="noreferrer">Open map</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260803-programs"></script>
   </body>
 </html>
