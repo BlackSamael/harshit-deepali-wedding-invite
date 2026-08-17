@@ -12,15 +12,12 @@ const inviteDetails = {
     "Harshit Khandelwal and Deepali Gupta invite you to Kota for two days of blessings, music, rituals, and royal celebration.",
   invitationMessage:
     "Your presence would make our wedding celebrations warmer, brighter, and complete. Join us as our families come together in Kota to bless this beautiful beginning.",
-  hostLine: "Hosted by the Gupta and Khandelwal families",
+  hostLine: "Hosted by the Khandelwal and Gupta Families",
   venueName: "Dharnidhar",
   venueShortName: "Dharnidhar",
   venueAddress: "Kota, Rajasthan",
   venueCity: "Kota",
   mapUrl: "https://maps.app.goo.gl/aD5LV8jAASJrSXN46",
-  friendsStayName: "Stay Location for Friends",
-  friendsStayCopy: "Use this map link for the friends' accommodation during the wedding celebrations.",
-  friendsStayMapUrl: "https://maps.app.goo.gl/tU2F9nR4g6uxysSUA",
   rsvpSheetUrl:
     "https://docs.google.com/spreadsheets/d/12tNFSUdWr4wkpq0ri_pp0IM08li3iQNAMcS5ekF3_xg/edit?usp=sharing",
   googleSheetsWebAppUrl: "https://script.google.com/macros/s/AKfycbwRnBOuz89Sz1bQHQ5L16jLc9aldJ2hTz8f-Hof4P6CbOTknS_Xt48MBXpq_klXn79C/exec",
@@ -33,6 +30,26 @@ const inviteDetails = {
   storyThreeTitle: "The new beginning",
   storyThreeCopy:
     "With your love and good wishes, Harshit and Deepali begin their next chapter together.",
+  outfitThemes: [
+    {
+      event: "Haldi",
+      theme: "Pastel outfits",
+      date: "21 November",
+      slug: "haldi",
+      note:
+        "Soft yellows, blush pinks, mint greens, lilacs, and ivory tones for a gentle Haldi morning.",
+      palette: ["#f7d66a", "#f6b8c8", "#b9debd", "#c9b7ed", "#fff4d9"],
+    },
+    {
+      event: "Sangeet Night",
+      theme: "Bollywood night",
+      date: "20 November",
+      slug: "bollywood",
+      note:
+        "Go glittery with champagne gold, silver sparkle, rose-gold shine, crystal white, and glossy magenta.",
+      palette: ["#f9d86b", "#fff4bd", "#d9dde8", "#f4a7b9", "#ff4fb8", "#2a123f"],
+    },
+  ],
   programDays: [
     {
       title: "20th November Programs",
@@ -69,6 +86,7 @@ const inviteDetails = {
 
 const byDataText = document.querySelectorAll("[data-text]");
 const eventContainer = document.querySelector("[data-events]");
+const outfitContainer = document.querySelector("[data-outfits]");
 const functionPicker = document.querySelector("[data-function-picker]");
 const rsvpForm = document.querySelector("[data-rsvp-form]");
 const saveDateButton = document.querySelector('[data-action="download-calendar"]');
@@ -97,10 +115,6 @@ function applyContent() {
     link.href = inviteDetails.mapUrl;
   });
 
-  const friendsStayLinks = document.querySelectorAll('[data-link="friendsStayMapUrl"]');
-  friendsStayLinks.forEach((link) => {
-    link.href = inviteDetails.friendsStayMapUrl;
-  });
 }
 
 function renderEvents() {
@@ -135,6 +149,36 @@ function renderEvents() {
       </div>
     `;
     eventContainer.appendChild(article);
+  });
+}
+
+function renderOutfitThemes() {
+  if (!outfitContainer) {
+    return;
+  }
+
+  outfitContainer.innerHTML = "";
+
+  inviteDetails.outfitThemes.forEach((theme) => {
+    const swatches = theme.palette
+      .map((color) => `<span style="--swatch: ${color}"></span>`)
+      .join("");
+    const article = document.createElement("article");
+    article.className = `outfit-card ${theme.slug}`;
+    article.innerHTML = `
+      <div class="outfit-card-header">
+        <span class="outfit-date">${theme.date}</span>
+        <div class="outfit-swatches" aria-label="${theme.event} color palette">
+          ${swatches}
+        </div>
+      </div>
+      <div>
+        <p class="outfit-event">${theme.event}</p>
+        <h3>${theme.theme}</h3>
+        <p>${theme.note}</p>
+      </div>
+    `;
+    outfitContainer.appendChild(article);
   });
 }
 
@@ -287,6 +331,7 @@ if (saveDateButton) {
 
 applyContent();
 renderEvents();
+renderOutfitThemes();
 renderFunctionOptions();
 updateCountdown();
 setInterval(updateCountdown, 1000);

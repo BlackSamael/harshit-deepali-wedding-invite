@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=20260803-programs">
+    <link rel="stylesheet" href="styles.css?v=20260817-venue-cleanup">
   </head>
   <body>
     <header class="site-header" aria-label="Primary">
@@ -27,6 +27,7 @@
       </a>
       <nav class="top-nav" aria-label="Wedding sections">
         <a href="#events">Events</a>
+        <a href="#outfits">Outfits</a>
         <a href="#venue">Venue</a>
       </nav>
     </header>
@@ -110,7 +111,7 @@
             Your presence would make our wedding celebrations warmer, brighter, and complete.
             Join us as we begin this beautiful chapter surrounded by the people we love.
           </p>
-          <p class="host-line" data-text="hostLine">Hosted by the Gupta and Khandelwal families</p>
+          <p class="host-line" data-text="hostLine">Hosted by the Khandelwal and Gupta Families</p>
         </div>
       </section>
 
@@ -122,6 +123,14 @@
         <div class="events-grid" data-events></div>
       </section>
 
+      <section class="outfit-section" id="outfits" aria-labelledby="outfits-title">
+        <div class="section-copy">
+          <p class="section-kicker">Color theme</p>
+          <h2 id="outfits-title">Outfits for the celebration</h2>
+        </div>
+        <div class="outfit-grid" data-outfits></div>
+      </section>
+
       <section class="venue-section" id="venue" aria-labelledby="venue-title">
         <div class="venue-copy">
           <p class="section-kicker">Venue</p>
@@ -130,9 +139,6 @@
           <div class="venue-actions">
             <a class="button primary" data-link="mapUrl" href="#" target="_blank" rel="noreferrer">
               Directions
-            </a>
-            <a class="button quiet" data-link="friendsStayMapUrl" href="#" target="_blank" rel="noreferrer">
-              Friends Stay
             </a>
           </div>
         </div>
@@ -146,18 +152,6 @@
               referrerpolicy="strict-origin-when-cross-origin"
             ></iframe>
           </div>
-          <article class="stay-card" aria-label="Friends stay location">
-            <div>
-              <p class="section-kicker">Friends Stay</p>
-              <h3 data-text="friendsStayName">Stay Location for Friends</h3>
-              <p data-text="friendsStayCopy">
-                Directions for the friends' accommodation are available here.
-              </p>
-            </div>
-            <a class="button quiet" data-link="friendsStayMapUrl" href="#" target="_blank" rel="noreferrer">
-              Open Stay Map
-            </a>
-          </article>
         </div>
       </section>
 
@@ -191,33 +185,6 @@
         </div>
       </section>
 
-      <section class="gallery-section" aria-labelledby="gallery-title">
-        <div class="section-copy">
-          <p class="section-kicker">Glimpses</p>
-          <h2 id="gallery-title">A little preview of the mood</h2>
-        </div>
-        <div class="gallery-grid" aria-label="Wedding invitation visuals">
-          <div class="gallery-feature">
-            <div class="gallery-emblem">
-              <span data-text="monogram">H + D</span>
-              <strong data-text="weddingDateDisplay">20 and 21 November 2026</strong>
-            </div>
-          </div>
-          <div class="gallery-tile tile-one">
-            <span>Sagai</span>
-          </div>
-          <div class="gallery-tile tile-two">
-            <span>Sangeet Night</span>
-          </div>
-          <div class="gallery-tile tile-three">
-            <span>Haldi</span>
-          </div>
-          <div class="gallery-tile tile-four">
-            <span>Wedding Procession</span>
-          </div>
-        </div>
-      </section>
-
     </main>
 
     <footer class="site-footer">
@@ -225,6 +192,6 @@
       <a data-link="mapUrl" href="#" target="_blank" rel="noreferrer">Open map</a>
     </footer>
 
-    <script src="script.js?v=20260803-programs"></script>
+    <script src="script.js?v=20260817-venue-cleanup"></script>
   </body>
 </html>
