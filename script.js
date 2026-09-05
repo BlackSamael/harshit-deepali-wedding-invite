@@ -289,9 +289,7 @@ function setupRevealMotion() {
 
 function setupOpeningMoment() {
   if (!openingVeil) return;
-  let seen = false;
-  try { seen = sessionStorage.getItem("invite-opened") === "yes"; sessionStorage.setItem("invite-opened", "yes"); } catch {}
-  if (seen || prefersReducedMotion) { openingVeil.remove(); return; }
+  if (prefersReducedMotion) { openingVeil.remove(); return; }
   window.setTimeout(() => { openingVeil.remove(); }, 1600);
 }
 
