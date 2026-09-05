@@ -2,7 +2,9 @@
 
 A self-contained wedding invitation website with:
 
-- static cinematic hero
+- immersive opening reveal
+- cinematic mandap-inspired hero
+- animated flower petals and diyas
 - countdown timer
 - event schedule
 - venue and directions

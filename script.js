@@ -6,12 +6,12 @@ const inviteDetails = {
   monogram: "H + D",
   weddingDate: "2026-11-20T10:00:00+05:30",
   celebrationEndDate: "2026-11-21T23:00:00+05:30",
-  weddingDateDisplay: "20 and 21 November 2026",
+  weddingDateDisplay: "20–21 November 2026",
   countdownTitle: "The royal celebration begins soon",
   heroCopy:
-    "Harshit Khandelwal and Deepali Gupta invite you to Kota for two days of blessings, music, rituals, and royal celebration.",
+    "Two days of dancing, traditions, and making memories with the people we love. Join us as our forever begins.",
   invitationMessage:
-    "Your presence would make our wedding celebrations warmer, brighter, and complete. Join us as our families come together in Kota to bless this beautiful beginning.",
+    "With the blessings of our families, we invite you to share in our wedding celebrations. Bring your laughter, your dancing shoes, and your love—we’ll make the memories together.",
   hostLine: "Hosted by the Khandelwal and Gupta Families",
   venueName: "Dharnidhar",
   venueShortName: "Dharnidhar",
@@ -52,7 +52,11 @@ const inviteDetails = {
   ],
   programDays: [
     {
-      title: "20th November Programs",
+      title: "Let the celebrations begin",
+      weekday: "Friday",
+      attire: "Sangeet · Bollywood sparkle",
+      attireNote: "A little shimmer, a favourite Bollywood look, and your dancing shoes.",
+      palette: ["#c39a48", "#d9dde8", "#bb4e74"],
       mark: "20",
       date: "20 November",
       shortDate: "20 Nov",
@@ -67,7 +71,11 @@ const inviteDetails = {
       ],
     },
     {
-      title: "21st November",
+      title: "A beautiful new beginning",
+      weekday: "Saturday",
+      attire: "Haldi · Soft pastels",
+      attireNote: "Think soft yellow, blush, mint, or lilac for a bright Haldi morning.",
+      palette: ["#f7d66a", "#f6b8c8", "#b9debd", "#c9b7ed"],
       mark: "21",
       date: "21 November",
       shortDate: "21 Nov",
@@ -89,8 +97,11 @@ const eventContainer = document.querySelector("[data-events]");
 const outfitContainer = document.querySelector("[data-outfits]");
 const functionPicker = document.querySelector("[data-function-picker]");
 const rsvpForm = document.querySelector("[data-rsvp-form]");
+const openingVeil = document.querySelector("[data-opening-veil]");
+const petalField = document.querySelector("[data-petal-field]");
 const saveDateButton = document.querySelector('[data-action="download-calendar"]');
 const countdownDate = new Date(inviteDetails.weddingDate);
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const countdownEls = {
   days: document.querySelector("[data-countdown-days]"),
   hours: document.querySelector("[data-countdown-hours]"),
@@ -124,7 +135,7 @@ function renderEvents() {
     const scheduleItems = day.functions
       .map(
         (item) => `
-        <li>
+        <li class="${/Breakfast|Lunch|Dinner/.test(item.name) ? "meal-row" : "ceremony-row"}">
           <time>${item.time}</time>
           <span>${item.name}</span>
         </li>
@@ -135,18 +146,14 @@ function renderEvents() {
     const article = document.createElement("article");
     article.className = "event-card program-card";
     article.innerHTML = `
-      <div class="event-mark">${day.mark}</div>
+      <div class="day-heading"><div class="event-mark">${day.mark}</div><span>${day.weekday}<br>November 2026</span></div>
       <div>
-        <div class="event-date">${day.date}</div>
         <h3>${day.title}</h3>
-        <p>${day.note}</p>
       </div>
       <ul class="program-list">
         ${scheduleItems}
       </ul>
-      <div class="event-meta">
-        <span>${day.venue}</span>
-      </div>
+      <div class="day-attire"><p class="attire-label">Suggested attire</p><h4>${day.attire}</h4><div class="attire-swatches" aria-hidden="true">${day.palette.map(color => `<span style="background:${color}"></span>`).join("")}</div><p>${day.attireNote}</p></div>
     `;
     eventContainer.appendChild(article);
   });
@@ -214,6 +221,89 @@ function renderFunctionOptions() {
   });
 }
 
+function renderPetals() {
+  if (!petalField || prefersReducedMotion) {
+    return;
+  }
+
+  const petals = [
+    [8, 9, -3, 15, 0.72],
+    [16, 12, 1.8, -28, 0.68],
+    [23, 10, -6.5, 34, 0.78],
+    [31, 14, -1.3, -18, 0.62],
+    [39, 8, -4.7, 26, 0.74],
+    [47, 12, 0.4, -42, 0.7],
+    [54, 10, -7.2, 38, 0.82],
+    [61, 15, -2.6, -24, 0.66],
+    [68, 9, -5.8, 30, 0.72],
+    [76, 13, -0.9, -36, 0.76],
+    [84, 11, -4.1, 22, 0.7],
+    [92, 14, -6.9, -32, 0.68],
+    [12, 8, -8.5, 40, 0.56],
+    [35, 11, -9.4, -20, 0.62],
+    [58, 8, -10.1, 30, 0.58],
+    [88, 10, -11.2, -26, 0.64],
+  ];
+
+  petalField.innerHTML = "";
+  petals.forEach(([left, size, delay, drift, opacity], index) => {
+    const petal = document.createElement("span");
+    petal.style.setProperty("--petal-left", `${left}%`);
+    petal.style.setProperty("--petal-size", `${size}px`);
+    petal.style.setProperty("--petal-delay", `${delay}s`);
+    petal.style.setProperty("--petal-duration", `${10 + (index % 5) * 1.8}s`);
+    petal.style.setProperty("--petal-drift", `${drift}px`);
+    petal.style.setProperty("--petal-opacity", opacity);
+    petalField.appendChild(petal);
+  });
+}
+
+function setupRevealMotion() {
+  const revealItems = document.querySelectorAll(
+    ".arrival-card, .countdown-intro, .countdown-card, .section-copy, .note-panel, .event-card, .outfit-card, .venue-copy, .map-panel, .story-grid article"
+  );
+
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.16 }
+  );
+
+  revealItems.forEach((item, index) => {
+    item.classList.add("reveal-item");
+    item.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
+    observer.observe(item);
+  });
+}
+
+function setupOpeningMoment() {
+  if (!openingVeil) return;
+  let seen = false;
+  try { seen = sessionStorage.getItem("invite-opened") === "yes"; sessionStorage.setItem("invite-opened", "yes"); } catch {}
+  if (seen || prefersReducedMotion) { openingVeil.remove(); return; }
+  window.setTimeout(() => { openingVeil.remove(); }, 1600);
+}
+
+function setupHeaderTone() {
+  const updateHeader = () => {
+    document.body.classList.toggle("has-scrolled", window.scrollY > 48);
+  };
+
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+}
+
 function updateCountdown() {
   const now = new Date();
   const diff = Math.max(countdownDate.getTime() - now.getTime(), 0);
@@ -223,10 +313,11 @@ function updateCountdown() {
   const minutes = Math.floor((seconds % 3600) / 60);
   const remainingSeconds = seconds % 60;
 
-  countdownEls.days.textContent = String(days).padStart(2, "0");
-  countdownEls.hours.textContent = String(hours).padStart(2, "0");
-  countdownEls.minutes.textContent = String(minutes).padStart(2, "0");
-  countdownEls.seconds.textContent = String(remainingSeconds).padStart(2, "0");
+  countdownEls.days.textContent = String(days);
+  if (diff === 0) document.querySelector(".quiet-countdown").textContent = "With love and gratitude, Harshit & Deepali";
+  if (countdownEls.hours) countdownEls.hours.textContent = String(hours).padStart(2, "0");
+  if (countdownEls.minutes) countdownEls.minutes.textContent = String(minutes).padStart(2, "0");
+  if (countdownEls.seconds) countdownEls.seconds.textContent = String(remainingSeconds).padStart(2, "0");
 }
 
 async function submitRsvp(event) {
@@ -325,13 +416,15 @@ if (rsvpForm) {
   rsvpForm.addEventListener("submit", submitRsvp);
 }
 
-if (saveDateButton) {
-  saveDateButton.addEventListener("click", downloadCalendarInvite);
-}
+document.querySelectorAll('[data-action="download-calendar"]').forEach(button => button.addEventListener("click", downloadCalendarInvite));
 
 applyContent();
 renderEvents();
 renderOutfitThemes();
 renderFunctionOptions();
+renderPetals();
+setupRevealMotion();
+setupOpeningMoment();
+setupHeaderTone();
 updateCountdown();
 setInterval(updateCountdown, 1000);

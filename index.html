@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#3b2f2f">
+    <meta name="theme-color" content="#180b12">
     <meta
       name="description"
       content="Harshit Khandelwal and Deepali Gupta's wedding invitation in Kota, Rajasthan."
@@ -17,9 +17,21 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=20260817-venue-cleanup">
+    <link rel="stylesheet" href="styles.css?v=20260905-refined-invite">
   </head>
   <body>
+    <a class="skip-link" href="#events">Skip to the program</a>
+    <div class="opening-veil" data-opening-veil aria-hidden="true">
+      <div class="veil-door left"></div>
+      <div class="veil-door right"></div>
+      <div class="veil-content">
+        <span class="veil-flame"></span>
+        <p>Harshit &amp; Deepali</p>
+        <strong>Wedding Celebration</strong>
+        <span>20–21 November 2026 | Kota</span>
+      </div>
+    </div>
+
     <header class="site-header" aria-label="Primary">
       <a class="brand-mark" href="#home" aria-label="Wedding invitation home">
         <span class="brand-icon" aria-hidden="true"></span>
@@ -27,7 +39,7 @@
       </a>
       <nav class="top-nav" aria-label="Wedding sections">
         <a href="#events">Events</a>
-        <a href="#outfits">Outfits</a>
+        <a href="#guest-notes">Guest notes</a>
         <a href="#venue">Venue</a>
       </nav>
     </header>
@@ -35,12 +47,24 @@
     <main>
       <section class="hero" id="home">
         <div class="hero-art" aria-hidden="true">
+          <div class="petal-field" data-petal-field></div>
           <div class="royal-arch">
             <div class="royal-crest">
               <span class="crest-kicker">Wedding</span>
               <strong data-text="monogram">H + D</strong>
               <span>Kota</span>
             </div>
+          </div>
+          <div class="mandap-scene">
+            <span class="mandap-roof"></span>
+            <span class="mandap-canopy"></span>
+            <span class="mandap-column column-left"></span>
+            <span class="mandap-column column-right"></span>
+            <span class="garland garland-left"></span>
+            <span class="garland garland-right"></span>
+            <span class="diya diya-one"></span>
+            <span class="diya diya-two"></span>
+            <span class="diya diya-three"></span>
           </div>
           <span class="royal-line line-one"></span>
           <span class="royal-line line-two"></span>
@@ -53,58 +77,34 @@
             <span class="ampersand">&amp;</span>
             <span data-text="groomName">Deepali</span>
           </h1>
-          <p class="hero-date" data-text="weddingDateDisplay">20 and 21 November 2026</p>
+          <p class="hero-date" data-text="weddingDateDisplay">20–21 November 2026</p>
           <p class="hero-venue">Dharnidhar, Kota, Rajasthan</p>
+          <div class="ritual-ribbon" aria-label="Wedding rituals">
+            <span>Sagai</span>
+            <span>Sangeet</span>
+            <span>Haldi</span>
+            <span>Barat</span>
+            <span>Pheras</span>
+          </div>
           <p class="hero-copy" data-text="heroCopy">
             We invite you to celebrate a day of love, laughter, blessings, and new beginnings.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#events">View Programs</a>
+            <a class="button primary" href="#events">Explore the celebrations</a>
             <button class="button ghost" type="button" data-action="download-calendar">
-              Save Date
+              Add to calendar
             </button>
           </div>
         </div>
-        <a class="scroll-cue" href="#details" aria-label="Scroll to invitation details">
+        <a class="scroll-cue" href="#welcome" aria-label="Scroll to invitation details">
           <span></span>
         </a>
       </section>
 
-      <section class="countdown-band" id="details" aria-label="Wedding countdown">
-        <div class="countdown-intro">
-          <p class="section-kicker">The celebration begins in</p>
-          <h2 data-text="countdownTitle">A little while longer</h2>
-        </div>
-        <div class="countdown-card" data-countdown>
-          <div class="countdown-card-header">
-            <span>20 November</span>
-            <strong>Kota awaits</strong>
-          </div>
-          <div class="countdown-main">
-            <strong data-countdown-days>00</strong>
-            <span>Days to the royal celebration</span>
-          </div>
-          <div class="countdown-subgrid">
-            <div>
-              <strong data-countdown-hours>00</strong>
-              <span>Hours</span>
-            </div>
-            <div>
-              <strong data-countdown-minutes>00</strong>
-              <span>Minutes</span>
-            </div>
-            <div>
-              <strong data-countdown-seconds>00</strong>
-              <span>Seconds</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="invite-note" aria-labelledby="invite-note-title">
+      <section class="invite-note" id="welcome" aria-labelledby="invite-note-title">
         <div class="section-copy">
           <p class="section-kicker">With love</p>
-          <h2 id="invite-note-title">A celebration shaped by family, tradition, and joy.</h2>
+          <h2 id="invite-note-title">Our favourite people.<br>Our happiest days.</h2>
         </div>
         <div class="note-panel">
           <p data-text="invitationMessage">
@@ -118,17 +118,18 @@
       <section class="events-section" id="events" aria-labelledby="events-title">
         <div class="section-copy">
           <p class="section-kicker">Events</p>
-          <h2 id="events-title">Moments to celebrate together</h2>
+          <h2 id="events-title">Two days. A lifetime of memories.</h2>
+          <p>Come for the celebrations. Stay for the memories.<br>All times are local to Kota (IST).</p>
         </div>
         <div class="events-grid" data-events></div>
       </section>
 
-      <section class="outfit-section" id="outfits" aria-labelledby="outfits-title">
-        <div class="section-copy">
-          <p class="section-kicker">Color theme</p>
-          <h2 id="outfits-title">Outfits for the celebration</h2>
+      <section class="guest-notes" id="guest-notes" aria-labelledby="guest-title">
+        <div class="section-copy"><p class="section-kicker">Good to know</p><h2 id="guest-title">A little planning,<br>a lot of celebrating.</h2></div>
+        <div class="guest-note-grid">
+          <article><span class="note-number">01 / DRESS</span><h3>Wear your celebration</h3><p>Find outfit inspiration with each day’s program. The colours are suggestions—come in what makes you feel wonderful.</p></article>
+          <article><span class="note-number">02 / SAVE</span><h3>Keep the dates close</h3><p>Add both days and the full program to your calendar, so the details are always at hand.</p><button class="text-action" type="button" data-action="download-calendar">Add to calendar <span aria-hidden="true">↗</span></button></article>
         </div>
-        <div class="outfit-grid" data-outfits></div>
       </section>
 
       <section class="venue-section" id="venue" aria-labelledby="venue-title">
@@ -136,6 +137,7 @@
           <p class="section-kicker">Venue</p>
           <h2 id="venue-title" data-text="venueName">Dharnidhar</h2>
           <p data-text="venueAddress">Kota, Rajasthan</p>
+          <p class="venue-hint">Use the pinned location below to plan your route to the celebrations.</p>
           <div class="venue-actions">
             <a class="button primary" data-link="mapUrl" href="#" target="_blank" rel="noreferrer">
               Directions
@@ -155,43 +157,23 @@
         </div>
       </section>
 
-      <section class="story-section" aria-labelledby="story-title">
-        <div class="section-copy">
-          <p class="section-kicker">Our story</p>
-          <h2 id="story-title">Two families, one beautiful beginning.</h2>
-        </div>
-        <div class="story-grid">
-          <article>
-            <span>01</span>
-            <h3 data-text="storyOneTitle">The first hello</h3>
-            <p data-text="storyOneCopy">
-              A simple conversation turned into a thousand reasons to smile.
-            </p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3 data-text="storyTwoTitle">The promise</h3>
-            <p data-text="storyTwoCopy">
-              With blessings from both families, a new chapter found its perfect beginning.
-            </p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3 data-text="storyThreeTitle">The celebration</h3>
-            <p data-text="storyThreeCopy">
-              Now we gather with the people who make every memory feel complete.
-            </p>
-          </article>
-        </div>
+      <section class="closing-note" aria-labelledby="closing-title">
+        <p class="section-kicker">With love, always</p>
+        <h2 id="closing-title">The celebration is ours.<br>The joy is having you there.</h2>
+        <p>We can’t wait to celebrate with you in Kota.</p>
+        <span class="closing-signature">Harshit &amp; Deepali</span>
+        <p class="quiet-countdown" data-countdown aria-live="off"><strong data-countdown-days>00</strong> days until we celebrate</p>
       </section>
 
     </main>
 
     <footer class="site-footer">
       <p data-text="footerLine">Made with love for Harshit and Deepali</p>
+      <span>See you in Kota | 20–21 November 2026</span>
       <a data-link="mapUrl" href="#" target="_blank" rel="noreferrer">Open map</a>
     </footer>
+    <nav class="mobile-actions" aria-label="Guest shortcuts"><a href="#events">The program</a><a data-link="mapUrl" href="#" target="_blank" rel="noreferrer">Directions ↗</a></nav>
 
-    <script src="script.js?v=20260817-venue-cleanup"></script>
+    <script src="script.js?v=20260905-refined-invite"></script>
   </body>
 </html>
